@@ -1,7 +1,9 @@
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
+import { isDarkAtom } from "../atom";
 
 interface ICoins {
   id: string;
@@ -64,37 +66,59 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+const ChangeThemeButton = styled.button`
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: x-large;
+  border: none;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.tabColor};
+  cursor: pointer;
+`;
+
 function Coins() {
+  const [isDark, setIsDark] = useRecoilState(isDarkAtom);
+  const onClick = () => {
+    setIsDark((curr) => !curr);
+  };
   const { isLoading, data } = useQuery<ICoins[]>(["allCoins"], fetchCoins);
 
   return (
-    <Container>
-      <Header>
-        <Title>Coins</Title>
-      </Header>
-      {isLoading ? (
-        <Loader>Loading...</Loader>
-      ) : (
-        <CoinsList>
-          {data?.slice(0, 50).map((coin) => (
-            <Coin key={coin.id}>
-              <Link
-                to={{
-                  pathname: `/${coin.id}`,
-                  state: { name: coin.name },
-                }}
-              >
-                <Img
-                  src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
-                  alt="coin-img"
-                />
-                {coin.name}
-              </Link>
-            </Coin>
-          ))}
-        </CoinsList>
-      )}
-    </Container>
+    <>
+      <Container>
+        <Header>
+          <Title>Coins</Title>
+        </Header>
+        {isLoading ? (
+          <Loader>Loading...</Loader>
+        ) : (
+          <CoinsList>
+            {data?.slice(0, 50).map((coin) => (
+              <Coin key={coin.id}>
+                <Link
+                  to={{
+                    pathname: `/${coin.id}`,
+                    state: { name: coin.name },
+                  }}
+                >
+                  <Img
+                    src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                    alt="coin-img"
+                  />
+                  {coin.name}
+                </Link>
+              </Coin>
+            ))}
+          </CoinsList>
+        )}
+      </Container>
+      <ChangeThemeButton onClick={onClick}>
+        {isDark ? "🌞" : "🌛"}
+      </ChangeThemeButton>
+    </>
   );
 }
 
