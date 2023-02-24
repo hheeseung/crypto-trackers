@@ -80,6 +80,7 @@ const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
+  position: relative;
 `;
 
 const Header = styled.header`
@@ -147,6 +148,15 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
+const Home = styled.button`
+  position: absolute;
+  left: 30px;
+  font-size: x-large;
+  background-color: inherit;
+  border: none;
+  color: ${(props) => props.theme.accentColor};
+`;
+
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
@@ -168,6 +178,9 @@ function Coin() {
         <Title>
           {state?.name ? state.name : loading ? "loading..." : info?.name}
         </Title>
+        <Home>
+          <Link to="/">⬅</Link>
+        </Home>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
