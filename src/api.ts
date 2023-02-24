@@ -14,3 +14,10 @@ export async function fetchCoinTickers(coinId: string) {
   const response = await fetch(`${BASE_URL}/tickers/${coinId}`);
   return await response.json();
 }
+
+export async function fetchCoinHistory(coinId: string) {
+  const response = await fetch(
+    `https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`
+  );
+  return await response.json();
+}
