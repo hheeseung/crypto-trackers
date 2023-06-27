@@ -1,8 +1,8 @@
 import ApexCharts from "react-apexcharts";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
-import { fetchCoinHistory } from "../api";
-import { isDarkAtom } from "../atom";
+import { fetchCoinHistory } from "../api/api";
+import { isDarkAtom } from "../atoms/isDarkAtom";
 import { darkTheme, lightTheme } from "../theme";
 
 interface ChartProps {

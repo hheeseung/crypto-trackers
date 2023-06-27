@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { fetchCoinTickers } from "../api";
+import { fetchCoinTickers } from "../api/api";
 import { IPriceData } from "./Coin";
 
 interface IPrice {

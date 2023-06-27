@@ -2,8 +2,8 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { fetchCoins } from "../api";
-import { isDarkAtom } from "../atom";
+import { fetchCoins } from "../api/api";
+import { isDarkAtom } from "../atoms/isDarkAtom";
 
 interface ICoins {
   id: string;
@@ -105,7 +105,7 @@ function Coins() {
                   }}
                 >
                   <Img
-                    src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`}
+                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                     alt="coin-img"
                   />
                   {coin.name}

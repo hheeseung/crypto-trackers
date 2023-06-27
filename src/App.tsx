@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { isDarkAtom } from "./atom";
-import Router from "./Router";
+import { isDarkAtom } from "./atoms/isDarkAtom";
+import Router from "./components/Router";
 import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
