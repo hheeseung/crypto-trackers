@@ -11,7 +11,7 @@ const darkTheme: DefaultTheme = {
 const lightTheme: DefaultTheme = {
   bgColor: "#f5f6fa",
   textColor: "#192a56",
-  cardColor: "#7f8fa6",
+  cardColor: "#8395a7",
   tabColor: "#dcdde1",
   accentColor: "#4cd137",
 };

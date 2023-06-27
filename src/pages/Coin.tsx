@@ -78,7 +78,7 @@ export interface IPriceData {
 
 const Container = styled.div`
   padding: 0px 20px;
-  max-width: 480px;
+  max-width: 400px;
   margin: 0 auto;
   position: relative;
 `;
@@ -91,7 +91,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 1.8rem;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -150,7 +150,7 @@ const Tab = styled.span<{ isActive: boolean }>`
 
 const Home = styled.button`
   position: absolute;
-  left: 30px;
+  left: 15px;
   font-size: x-large;
   background-color: inherit;
   border: none;

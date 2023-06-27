@@ -15,18 +15,18 @@ const Container = styled.div`
 `;
 
 const Item = styled.div`
-  width: 200px;
-  height: 100px;
+  width: 7em;
+  height: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.theme.tabColor};
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
-  font-size: xx-large;
+  font-size: 1.5rem;
   span:first-child {
-    font-size: medium;
-    font-weight: 400;
+    font-size: 0.8rem;
+    font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 10px;
   }
@@ -49,7 +49,7 @@ const HighPrice = styled.div`
   border-radius: 10px;
   background-color: ${(props) => props.theme.tabColor};
   color: ${(props) => props.theme.textColor};
-  font-size: 20px;
+  font-size: 1.8rem;
 `;
 
 const Title = styled.div`
