@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api/api";
 import { isDarkAtom } from "../atoms/isDarkAtom";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 interface ICoins {
   id: string;
@@ -24,8 +25,25 @@ const Container = styled.div`
 const Header = styled.header`
   height: 10vh;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+  color: ${(props) => props.theme.accentColor};
+`;
+
+const ChangeThemeButton = styled.button`
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-size: large;
+  border: none;
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.themeIconColor};
+  cursor: pointer;
 `;
 
 const CoinsList = styled.ul``;
@@ -50,11 +68,6 @@ const Coin = styled.li`
   }
 `;
 
-const Title = styled.h1`
-  font-size: 2.5rem;
-  color: ${(props) => props.theme.accentColor};
-`;
-
 const Loader = styled.span`
   display: block;
   text-align: center;
@@ -64,19 +77,6 @@ const Img = styled.img`
   width: 35px;
   height: 35px;
   margin-right: 10px;
-`;
-
-const ChangeThemeButton = styled.button`
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  font-size: x-large;
-  border: none;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme.tabColor};
-  cursor: pointer;
 `;
 
 function Coins() {
@@ -90,7 +90,10 @@ function Coins() {
     <>
       <Container>
         <Header>
-          <Title>Coins</Title>
+          <Title>Coins List</Title>
+          <ChangeThemeButton onClick={onClick}>
+            {isDark ? <BsMoonFill /> : <BsSunFill />}
+          </ChangeThemeButton>
         </Header>
         {isLoading ? (
           <Loader>Loading...</Loader>
@@ -115,9 +118,6 @@ function Coins() {
           </CoinsList>
         )}
       </Container>
-      <ChangeThemeButton onClick={onClick}>
-        {isDark ? "🌞" : "🌛"}
-      </ChangeThemeButton>
     </>
   );
 }
