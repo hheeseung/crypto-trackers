@@ -87,38 +87,36 @@ function Coins() {
   const { isLoading, data } = useQuery<ICoins[]>(["allCoins"], fetchCoins);
 
   return (
-    <>
-      <Container>
-        <Header>
-          <Title>Coins List</Title>
-          <ChangeThemeButton onClick={onClick}>
-            {isDark ? <BsMoonFill /> : <BsSunFill />}
-          </ChangeThemeButton>
-        </Header>
-        {isLoading ? (
-          <Loader>Loading...</Loader>
-        ) : (
-          <CoinsList>
-            {data?.slice(0, 50).map((coin) => (
-              <Coin key={coin.id}>
-                <Link
-                  to={{
-                    pathname: `/${coin.id}`,
-                    state: { name: coin.name },
-                  }}
-                >
-                  <Img
-                    src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
-                    alt="coin-img"
-                  />
-                  {coin.name}
-                </Link>
-              </Coin>
-            ))}
-          </CoinsList>
-        )}
-      </Container>
-    </>
+    <Container>
+      <Header>
+        <Title>Coins List</Title>
+        <ChangeThemeButton onClick={onClick}>
+          {isDark ? <BsMoonFill /> : <BsSunFill />}
+        </ChangeThemeButton>
+      </Header>
+      {isLoading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+        <CoinsList>
+          {data?.slice(0, 50).map((coin) => (
+            <Coin key={coin.id}>
+              <Link
+                to={{
+                  pathname: `/${coin.id}`,
+                  state: { name: coin.name },
+                }}
+              >
+                <Img
+                  src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                  alt="coin-img"
+                />
+                {coin.name}
+              </Link>
+            </Coin>
+          ))}
+        </CoinsList>
+      )}
+    </Container>
   );
 }
 
