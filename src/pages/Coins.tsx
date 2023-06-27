@@ -51,7 +51,7 @@ const CoinsList = styled.ul``;
 const Coin = styled.li`
   background-color: ${(props) => props.theme.cardColor};
   color: ${(props) => props.theme.bgColor};
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 15px;
   transition: all 0.2s ease-in-out;
   a {
