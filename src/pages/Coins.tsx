@@ -90,7 +90,7 @@ function Coins() {
     <Container>
       <Header>
         <Title>Coins List</Title>
-        <ChangeThemeButton onClick={onClick}>
+        <ChangeThemeButton onClick={onClick} name="theme button">
           {isDark ? <BsMoonFill /> : <BsSunFill />}
         </ChangeThemeButton>
       </Header>
